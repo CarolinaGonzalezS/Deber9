@@ -7,11 +7,30 @@ fig=ventana.create_polygon(20,10,20,60,80,35, fill="yellow")
 rec=ventana.create_rectangle(20,90, 80, 120, fill="blue")
 cir=ventana.create_oval(20, 200, 80, 150, fill="red")
 
-for x in range(0,60):
-	ventana.move(fig, 5,0 )	
-	ventana.move(rec, 5,0 )	
-	ventana.move(cir, 5,0 )	
-	tk.update()
-	time.sleep(0.05)
+def Movimiento(event):
+    if event.keysym == 'Up':
+        ventana.move(fig,0,-3)
+        ventana.move(rec,0,-3)
+        ventana.move(cir,0,-3)
+    elif event.keysym == 'Down':
+        ventana.move(fig,0,3)
+        ventana.move(rec,0,3)
+        ventana.move(cir,0,3)
+    elif event.keysym == 'Left':
+        ventana.move(fig,-3,0)
+        ventana.move(rec,-3,0)
+        ventana.move(cir,-3,0)
+    else:
+        ventana.move(fig, 3, 0)
+        ventana.move(rec, 3, 0)
+        ventana.move(cir,3,0)
+       
+
+
+ventana.bind_all('<KeyPress-Up>',Movimiento)
+ventana.bind_all('<KeyPress-Down>',Movimiento)
+ventana.bind_all('<KeyPress-Left>',Movimiento)
+ventana.bind_all('<KeyPress-Right>',Movimiento)
+ventana.move(rec,0,3)
 
 tk.mainloop()
